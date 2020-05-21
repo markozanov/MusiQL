@@ -6,10 +6,6 @@ import org.apache.jena.sparql.vocabulary.FOAF;
 import org.apache.jena.vocabulary.RDFS;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -64,7 +60,6 @@ public class Main {
                     endYear.charAt(2) +
                     endYear.charAt(3);
         }
-        System.out.println(actualStartYear + " - " + actualEndYear);
 
         StmtIterator activeMembers = performer.listProperties(new PropertyImpl("http://dbpedia.org/ontology/bandMember"));
         if(activeMembers.hasNext()){
@@ -117,6 +112,7 @@ public class Main {
         if(performer.hasProperty(FOAF.homepage))
             homepage = performer.getProperty(FOAF.homepage).getObject().toString();
 
+        System.out.println(actualStartYear + " - " + actualEndYear);
         System.out.println(comment);
         System.out.println("Active Members:\n" + activeMembersToSend);
         System.out.println("Former Members:\n" + pastMembersToSend);
